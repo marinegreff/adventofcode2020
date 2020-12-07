@@ -42,5 +42,3 @@ for line in inputLines:
 print("Number of valid passports: {}".format(numberOfValidPassports))
 
 inputFile.close()
-
-# entre 130 et 148
