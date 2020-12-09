@@ -27,19 +27,15 @@ for line in inputLines:
             group = "".join(set(group))
             allAnsweredYesCount += len(group)
         else:
-            #regex = r'(.)\1{' + str(peopleCount) + r'}'
-            # Something is super wrong with the escaping and regex
-            # This works for some reason
-            rgx = re.compile(r'(.)\1{3}') 
-            # But nothing works if using peopleCount
-            # str1 = r'(.)\1{'
-            # str2 = r'{}'.format(re.escape(str(peopleCount)))
-            # str3 = r'}'
-            # rgx = re.compile(str1 + str2 + str3)
-            test = rgx.findall(group)
-            # response = rgx.findall(group)
-            print("group: {} response: {}".format(group, test))
-            # allAnsweredYesCount += len(response)
+            answerCount = 1
+            lastLetter = ""
+            for letter in group:
+                if lastLetter == letter:
+                    answerCount += 1
+                lastLetter = letter
+                if answerCount == peopleCount:
+                    allAnsweredYesCount += 1
+                    answerCount = 1
         # Remove duplicate letters
         group = "".join(set(group))
         answeredYesCount += len(group)
@@ -53,3 +49,5 @@ print("Questions answered yes {}".format(answeredYesCount))
 print("Questions all answered yes {}".format(allAnsweredYesCount))
 
 inputFile.close()
+
+# 2984 too high
