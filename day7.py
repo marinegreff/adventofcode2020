@@ -57,10 +57,15 @@ def bagCounter(color):
                 if (splittedLine[counter + 3] == "bag.") or (splittedLine[counter + 3] == "bags."):
                     someChildrenBags = False
                 counter = counter + 4
-            print("Childern bags {}".format(childrenBags))
             return childrenBags
             
-nestedBags = bagCounter("shinygold")
+numberOfBags = 0
+returnedBag = bagCounter("shinygold")
+for bag in returnedBag:
+    numberOfBags = numberOfBags + bag[1]
+    # Need to go down further
 
 
+
+print("Nested bags {}".format(numberOfBags))
 inputFile.close()
